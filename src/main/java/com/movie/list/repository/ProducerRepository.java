@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ProducerRepository extends JpaRepository<Producer, Long> {
-  @Query("SELECT p FROM Producer p JOIN p.movies m WHERE m.isWinner = true ORDER BY m.year DESC")
+  @Query("SELECT DISTINCT(p) FROM Producer p JOIN p.movies m WHERE m.isWinner = true")
   public List<Producer> findByWinnerMovie();
 
   public Producer findByName(String name);
