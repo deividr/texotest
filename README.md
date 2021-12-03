@@ -28,3 +28,11 @@ $ cd texotest
 $ docker build -t texotest .
 $ docker run -p 8080:8080 texotest
 ```
+
+# Endpoints:
+
+To get the producers' winning interval:
+
+```
+http://localhost:8080/producers
+```
