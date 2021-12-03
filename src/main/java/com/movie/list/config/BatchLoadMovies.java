@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import com.movie.list.model.Movie;
 import com.movie.list.model.Producer;
@@ -29,6 +30,10 @@ public class BatchLoadMovies {
   public void load() {
     List<List<String>> records = new ArrayList<>();
     InputStream in = getClass().getResourceAsStream("/movielist.csv");
+
+    if (Objects.isNull(in)) {
+      throw new IllegalArgumentException("File movielist.csv not found");
+    }
 
     try (BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
       String line;
