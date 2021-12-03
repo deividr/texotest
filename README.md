@@ -20,3 +20,11 @@ $ cd texotest
 $ ./mvnw clean package
 $ java -jar .\target\list-0.0.1-SNAPSHOT.jar
 ```
+
+Or with Docker:
+
+```bash
+$ cd texotest
+$ docker build -t texotest .
+$ docker run -p 8080:8080 texotest
+```
