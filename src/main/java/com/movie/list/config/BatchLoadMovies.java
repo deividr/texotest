@@ -1,7 +1,8 @@
 package com.movie.list.config;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,8 +28,9 @@ public class BatchLoadMovies {
   @Bean
   public void load() {
     List<List<String>> records = new ArrayList<>();
+    InputStream in = getClass().getResourceAsStream("/movielist.csv");
 
-    try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/movielist.csv"))) {
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
       String line;
       while ((line = br.readLine()) != null) {
         String[] values = line.split(";");
